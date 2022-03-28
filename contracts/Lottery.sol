@@ -84,8 +84,10 @@ contract Lottery is VRFConsumerBase, Ownable {
 
         lottery_state = LOTTERY_STATE.CALCULATING_WINNER;
         bytes32 requestId = requestRandomness(keyhash, fee);
+        // above line making a request to chain link node
     }
 
+    // above requested chainlink node is going to responded with this function
     function fulfillRandomness(bytes32 _requestId, uint256 _randomness)
         internal
         override
