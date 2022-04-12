@@ -94,6 +94,7 @@ contract Lottery is VRFConsumerBase, Ownable {
         internal
         override
     {
+        // require statement allows the program to flow only if condition is true
         require(
             lottery_state == LOTTERY_STATE.CALCULATING_WINNER,
             "You aren't there at!"
