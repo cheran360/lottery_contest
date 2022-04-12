@@ -26,6 +26,7 @@ contract Lottery is VRFConsumerBase, Ownable {
     LOTTERY_STATE public lottery_state;
     uint256 public fee;
     bytes32 public keyhash;
+    event RequestRandomness(bytes32 requestId);
 
     // adding additional VRFConsumerBase constructor
     constructor(
@@ -85,6 +86,7 @@ contract Lottery is VRFConsumerBase, Ownable {
         lottery_state = LOTTERY_STATE.CALCULATING_WINNER;
         bytes32 requestId = requestRandomness(keyhash, fee);
         // above line making a request to chain link node
+        emit RequestRandomness(requestId);
     }
 
     // above requested chainlink node is going to responded with this function
